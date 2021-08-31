@@ -1,0 +1,12 @@
+CPU STRESS COMMANDS
+===================
+$ top
+$ yum install wget
+$ wget https://repo.almalinux.org/almalinux/8/extras/x86_64/os/Packages/epel-release-8- -y
+$ yum install stress* -y
+$ stress -c 100 --timeout 1800 &
+  -c --> count
+  100--> no of request
+  1800 > 1800 seconds
+  &  --> it will run on backgroud
+$ top
