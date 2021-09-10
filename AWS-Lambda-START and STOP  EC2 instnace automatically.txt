@@ -2,10 +2,26 @@ Ref url:
 https://www.bing.com/videos/search?q=schedular+in+cloudwatch+with+lamda+stop+and+start+EC2+instance&&view=detail&mid=A51CF88F1AB4F4659EC0A51CF88F1AB4F4659EC0&&FORM=VRDGAR&ru=%2Fvideos%2Fsearch%3Fq%3Dschedular%2Bin%2Bcloudwatch%2Bwith%2Blamda%2Bstop%2Band%2Bstart%2BEC2%2Binstance%26FORM%3DHDRSC3
 
 https://www.youtube.com/watch?v=93K29VPt0nQ&list=PLwCFQqHE6M98BoonWUSxzfpznuifz-BOZ&index=1
----------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 How to STOP ans START AWS EC2 instnace automatically
 using IAM, Lamda with Amazon EventBridge (schduler)
----------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+
+
+Lambda 
+------
+Lambda is used for automation
+Lambda is Serverless
+Lambda is invoked based on the triggers
+
+Automated version of EC2
+No worries about the underlying Architecture
+For executing background tasks
+
+AWS Lambda as a 'serverless' compute service, meaning the developer,dont have to worry about which AWS resources to launch,o r how will they manage tehm,they just put the code on lambda and its runs.it's that simple! Althrough, Lambda can only be used to execute background tasks.
+
+
+----------------------------------------------------------------------------------------------------------------
 1.Create a EC2 Instnace
 2.Create IAM Role (Lamda) and Policy (EC2)
 	2.1. IAM Role (Lambda)
