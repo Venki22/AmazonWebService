@@ -1,0 +1,23 @@
+/* CREATE  A VAULT */
+aws glacier create-vault --vault-name <<vault-name>>  --account-id -
+
+/* UPLOAD AN FILES TO AN ARCHIVE */
+aws glacier upload-archive --account-id - --vault-name <<vault-name>> --body One.txt
+aws glacier upload-archive --account-id - --vault-name <<vault-name>> --body Two.txt
+
+/*INITIATE JOB TO RETREIVE ARCHIVE INVENTORY*/
+aws glacier initiate-job --account-id - --vault-name <<vault-name>> --job-parameters file://inventory-retrieval.json
+
+/* INITIATE JOB TO RETREIVE AN UPLOAD FILE */
+aws glacier intitiate-job --acount-id - --vault-name <<vault-name>> --job-parameters file://job-archive-retrieval.json
+
+/* DESCRIBE AN ACTIVE JOB */
+aws glacier describe-job --account-id - --vault-name <<vault-name>> --job-id <<job-id>>
+
+/* LIST ALL ACTIVE JOBS */
+aws glacier list-jobs --account-id - --vault-name <<vault-name>>
+
+/* DESCRIBE A VAULT */
+aws glacier describe-vault --vault-name <<vault-name>> --account-id -
+
+(https://www.bing.com/videos/search?q=create+aws+vault+and+delete+vault+in+aws+glacier+&ru=%2fvideos%2fsearch%3fq%3dcreate%2520aws%2520vault%2520and%2520delete%2520vault%2520in%2520aws%2520glacier%2520%26qs%3dn%26form%3dQBVDMH%26sp%3d-1%26pq%3dcreate%2520aws%2520vault%2520and%2520delete%2520vault%2520in%2520aws%2520glacier%2520%26sc%3d0-49%26sk%3d%26cvid%3d8BB84C409A074CB682DC84F5A8749E36&view=detail&mid=2B0F61872650D93EF54D2B0F61872650D93EF54D&&FORM=VDRVSR)

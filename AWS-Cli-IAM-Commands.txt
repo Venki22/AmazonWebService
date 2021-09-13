@@ -1,0 +1,42 @@
+/* CREATE AN IAM USER */
+aws iam create-user --user-name <<user-name>>
+aws iam create-user --user-name Bob
+
+/* TO CREATE AN ACCESS KEY FOR AN IAM USER */
+aws iam create-access-key --user-name Bob
+
+/* TO CHANGE THE PASSWORD FOR IAM USER */
+aws iam change-password --generate-cli-skeleton > change-password.json
+
+The previous command creates a JSON file called change-password.json that you can use to fill in your old and new passwords. For example, the file might look like this:
+
+{
+    "OldPassword": "3s0K_;xh4~8XXI",
+    "NewPassword": "]35d/{pB9Fo9wJ"
+}
+
+aws iam change-password --cli-input-json file://change-password.json
+
+/ * TO DELETE AN IAM USER */
+aws iam delete-user --user-name Bob
+
+/ * TO GET INFORMATION ABOUT IAM ROLE*/
+aws iam get-role \
+    --role-name Test-Role
+
+/* TO GET INFORMATION ABOUT IAM USER */
+aws iam get-user --user-name <<user-name>>
+aws iam get-user --user-name Bob
+
+/* CREATE ROLE */
+aws iam create-role --role-name <<role-name>>
+
+/* CREATE GROUP */
+aws iam create-group --group-name <<group-name>>
+
+/* GET ROLE NAME */
+aws iam get-role \ --role-name <<role-name>>
+
+aws iam list-groups
+aws iam list-roles
+
