@@ -1,0 +1,50 @@
+IAM User
+S3 Bucket
+Create custom managed policy
+attached custome managed plicy
+
+IAM USER
+aws iam create-user --user-name <<username>>
+aws iam create-access-key --user-name <<username>>
+
+copy access key and sec-key and arn 
+
+Creating bucket using AWS Cli
+-----------------------------
+aws s3api create-bucket --bucket <<bucket-name>> --region <<av-zone>>
+aws s3api create-bucket --bucket repo-cloud-s3 --region us-east-1
+
+
+create customer managed policy
+------------------------------
+To list first 6 policy use this command
+aws iam list-policies --max-item 6
+
+aws iam create-policy --policy-name s3-restricted-policy --policy-document file://<file-name>.json
+vi s3-restricted-policy.json  <enter>
+aws iam create-policy --policy-name s3-restricted-policy --policy-document file://s3-restricted-policy.json
+copy arn
+
+ATTACH POLICY TO IAM USER
+-------------------------
+aws iam attach-user-policy --policy-arn <<arn created from aws cli>>  --user-name <<iam username>>
+
+Validate and check
+------------------
+login in iam user using cli
+aws configure
+provide access key and sec key which we created recently for 
+new iam user
+once login
+aws s3 ls  // command for checking s3 bucket list
+
+it will show list of buckets
+need to check our bucket which we created from CLI
+
+Upload file  to new bucket
+--------------------------
+touch file.txt
+aws s3 cp file.txt s3://<destination-bukcet-name>
+
+
+

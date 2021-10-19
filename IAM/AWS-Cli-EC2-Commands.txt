@@ -1,0 +1,24 @@
+/* START INSTANCE */
+aws ec2 start-instances --instance-ids <<instance-id>>
+aws ec2 start-instances --instance-ids i-075de5ccbe0bddc41
+
+/* STOP INSTANCE */
+aws ec2 stop-instances --instance-ids <<instance-id>>
+aws ec2 stop-instances --instance-ids i-075de5ccbe0bddc41
+
+/* TERMINATE INSTANCES */
+aws ec2 terminate-instances --instance-ids <<instance-id>>
+
+/* REBOOT INSTANCES */
+aws ec2 reboot-instances --instance-ids <<instance-id>> 
+aws ec2 reboot-instances --instance-ids i-075de5ccbe0bddc41 
+/* MULTIPLD INSTANCES */
+aws ec2 reboot-instances --instance-ids i-075de5ccbe0bddc41 i-0ce54625fe9b93257 
+
+/* CREATE TAG */
+aws ec2 create-tags \
+    --resources  --tags Key=Stack,Value=production
+
+aws ec2 describe-instance-types
+aws ec2 describe-instance-status
+aws ec2 describe-key-pairs
