@@ -1,0 +1,77 @@
+/* CREATE QUEUE */
+------------------
+aws sqs create-queue --queue-name <<queue-name>>
+aws sqs create-queue --queue-name MyTempQueue
+
+/* CREATE STANDARD QUEUE */
+---------------------------
+aws create-queue --queue-name <<standard-queue-name>> --attribute file://<<file-name>>.json
+aws create-queue --queue-name MystandardDemo --attribute file://create-queue.json
+
+***********************************
+create-queue.json
+-----------------
+{
+	"VisibilityTimeout": "120",
+	"MessageRetentionPeriod": "20000",
+	"MaximumMessageSize": "262144"
+}
+*************************************** 
+
+
+/* CREATE FIFO QUEUE */
+-----------------------
+aws sqs create-queue --queue-name <<Fifo-queue-name>> --attributes FifoQueue=true
+aws sqs create-queue --queue-name MyFifoQueue.fifo --attributes FifoQueue=true
+Note:
+if we dont mentioned FifoQueue=true it will consider as standard queue
+
+
+/* LIST YOUR QUEUES */
+----------------------
+aws sqs list-queues
+
+aws sqs list-queues --queue-name-prefix <<queue-name>>
+aws sqs list-queues --queue-name-prefix Mys
+
+/* GET QUEUE URL */
+-------------------
+aws sqs get-queue-url --queue-name <<queue-name>>
+aws sqs get-queue-url --queue-name MystandardDemo
+
+/* SEND A MESSAGE */
+-------------------
+aws sqs send-message
+	--queue-url https://sqs.ap-south-1.amazonaws.com/<<Account-number>>/<<queue-name>>
+	--message-boy "message"
+
+aws sqs send-message
+	--queue-url https://sqs.ap-south-1.amazonaws.com/123456789/MystandardDemo
+	--message-boy "I Love My India"
+
+/* RECEIVE MESSAGE */
+---------------------
+aws sqs receive-message
+	--queue-url https://sqs.ap-south-1.amazonaws.com/123456789/MystandardDemo
+	--attribute-name All
+	--message-attribute-names All
+	--max-number-of-messages 10
+
+/* DELETE MESSAGE - NO RESPONSE ON SUCCESS */
+--------------------------------------------
+aws sqs delete-message
+	--queue-url https://sqs.ap-south-1.amazonaws.com/123456789/MystandardDemo
+	--receipt-handle ea004906-**********************
+
+Note :receipt handle will contain the combination of small / big /special charecters.
+-----
+
+/* PURGE QUEUE - NO RESPONSE ON SUCCESS */
+-----------------------------------------
+aws sqs purge-queue --queue-url https://sqs.ap-south-1.amazonaws.com/123456789/MystandardDemo
+
+
+/* DELETE QUEUE - NO RESPONSE ON SUCCESS */
+------------------------------------------
+aws sqs delete-queue --queue-url https://sqs.ap-south-1.amazonaws.com/123456789/MystandardDemo
+
